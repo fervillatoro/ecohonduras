@@ -10,9 +10,9 @@ export const environment = {
   },
 
   api: {
-    version: 'v1',
-    publicKey: 'cd8b4405c10148e0de69',
-    domain: `https://api.zavafa.com`,
+    version: 'NOT_APPLY',
+    publicKey: 'NOT_APPLY',
+    domain: `NOT_APPLY`,
     maxSessionDurationInDays: 7,
     get uriRequest () {
       return `${this.domain}/${this.version}/public`;
