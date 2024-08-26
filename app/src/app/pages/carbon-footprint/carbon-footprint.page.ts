@@ -82,6 +82,8 @@ export class CarbonFootprintPage implements OnInit {
    * @see https://united4efficiency.org/wp-content/uploads/2019/11/ES_HND_U4E-Country-Saving-Assessment_All.pdf
    */
   async calculate() {
+    this.dataHandler.error = undefined;
+    
     const getRange = (kwh: number, monthlyOrAnnual: 'monthly' | 'annual'): { icon: string, color: string, range: Range } => {
       switch(monthlyOrAnnual) {
         case 'monthly':
@@ -108,7 +110,10 @@ export class CarbonFootprintPage implements OnInit {
     });
 
     if(history.length === 0) {
-      console.error('No hay historial de consumo de electricidad');
+      this.dataHandler.isLoading = false;
+      this.dataHandler.error = {
+        msg: 'No hay historial de consumo, primer agrega una factura desde la página de consumo.',
+      }
       return;
     }
 

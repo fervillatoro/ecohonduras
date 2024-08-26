@@ -16,7 +16,16 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   @if(dataHandler.isLoading) {
-    <ion-skeleton-text [animated]="true" style="width: 80px"></ion-skeleton-text>
+    <ion-skeleton-text [animated]="true" style="width: 90%;height: 50%;"></ion-skeleton-text>
+  }
+
+  @if(dataHandler.error) {
+    <div class="ion-text-center">
+      <ion-text color="danger" class="ion-margin">
+        <h6>{{ dataHandler.error.msg }}</h6>
+      </ion-text>
+      <ion-button>Reintentar</ion-button>
+    </div>
   }
 
   @if(dataHandler.data) {

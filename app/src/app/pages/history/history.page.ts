@@ -190,7 +190,7 @@ export class HistoryPage implements OnInit {
     modal.onDidDismiss().then((result) => {
       console.log('modal.onDidDismiss', result);
       
-      if(result.data.refresh) {
+      if(result.data?.refresh) {
         this.initCharts();
       }
     });
