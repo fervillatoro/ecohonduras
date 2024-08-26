@@ -1,0 +1,83 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="ion-text-center">
+    <img src="./assets/icon/logo-letters.png" style="width: 150px; height: 150px;" />
+  </div>
+
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="11" sizeSm="11" sizeMd="4" sizeLg="4">
+        <ion-card>
+          <ion-card-header class="ion-text-center">
+            <ion-card-title style="font-weight: bold;">Crea una cuenta</ion-card-title>
+            <ion-card-subtitle>en Eco Honduras</ion-card-subtitle>
+          </ion-card-header>
+          
+          <ion-card-content>
+            <form [formGroup]="frm" (ngSubmit)="create()" class="ion-card">
+              <ion-item>
+                <ion-input type="fullname" formControlName="fullname" labelPlacement="floating">
+                  <div slot="label">Nombre completo</div>
+                </ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input type="dni" formControlName="dni" labelPlacement="floating">
+                  <div slot="label">No. Identidad</div>
+                </ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input type="email" formControlName="email" labelPlacement="floating">
+                  <div slot="label">Correo electrónico</div>
+                </ion-input>
+              </ion-item>
+        
+              <ion-item>
+                <ion-input #pwdTarget type="password" formControlName="pwd" labelPlacement="floating">
+                  <div slot="label">Crea una contraseña</div>
+                </ion-input>
+              </ion-item>
+        
+              <ion-item lines="none" class="ion-margin-top">
+                <ion-checkbox #showPwd slot="start" labelPlacement="end" (ionChange)="showPwd.checked ? pwdTarget.type = 'text' : pwdTarget.type = 'password'">
+                  Mostrar contraseña
+                </ion-checkbox>
+              </ion-item>
+      
+              @if(dataHandler.isLoading){
+                <ion-button type="button" expand="block" color="light" class="ion-margin-top" shape="round" disabled>
+                  <span style="margin-right: 15px;">
+                    Creando
+                  </span>
+                  <ion-spinner name="dots" color="primary"></ion-spinner>
+                </ion-button>
+              } @else {
+                <ion-button type="submit" expand="block" color="primary" class="ion-margin-top" shape="round">Continuar</ion-button>
+              }
+            </form>
+          </ion-card-content>
+        </ion-card>
+      
+        
+      
+        
+      
+        @if(dataHandler.error){
+          <ion-text color="danger">
+            <div style="margin: 15px;text-align: center;">
+              {{ dataHandler.error.msg }}
+            </div>
+          </ion-text>
+        }
+
+        <div class="ion-text-center ion-padding">
+          <ion-button fill="clear" routerLink="/accounts/login" color="medium">Ya tengo cuenta</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
+</ion-content>
+
+

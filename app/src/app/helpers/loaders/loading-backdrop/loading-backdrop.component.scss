@@ -1,0 +1,15 @@
+#loading-backdrop {
+  background: var(--bs-body-bg);
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+
+  &:not(.component-loaded) {
+    display: flex;
+  }
+
+  &.component-loaded {
+    display: none;
+  }
+}

@@ -1,0 +1,137 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" routerLink="/tabs/home">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Más tips</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="none">
+    <ion-item class="ion-margin-bottom">
+      <ion-icon slot="start" name="lightbulb" color="warning"></ion-icon>
+      <ion-label class="ion-margin-start">
+        <h2>Usa Bombillas LED</h2>
+        <p>Las bombillas LED consumen hasta un 80% menos de energía que las bombillas incandescentes.</p>
+        <ion-button color="warning" fill="clear" style="margin-left: -12px;" id="openModalLED">
+          Solicitar bombillas LED
+        </ion-button>
+        <ion-modal #modal trigger="openModalLED">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar>
+                <ion-buttons slot="start">
+                  <ion-button (click)="modal.dismiss()">
+                    <ion-icon name="arrow-back" />
+                  </ion-button>
+                </ion-buttons>
+                <ion-title>Solicitar bombillos LED</ion-title>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+              <ion-card>
+                <ion-card-content>
+                  <ion-list>
+                    <ion-item>
+                      <ion-label>
+                        <h2>¡Ahorra energía!</h2>
+                        <p>Las bombillas LED consumen hasta un 80% menos de energía que las bombillas incandescentes.</p>
+                      </ion-label>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>
+                        <h2>
+                          Haz tu solicitud
+                        </h2>
+                        <p>Ve a la Colonia Tepeyac, calle Yoro, Bloque Q S1. De 9:00 a.m. a 5:00 p.m.</p>
+                      </ion-label>
+                    </ion-item>
+                  </ion-list>
+                </ion-card-content>
+
+              </ion-card>
+
+              <ion-accordion-group class="ion-margin-top">
+                <ion-accordion value="first" style="border-radius: 1em">
+                  <ion-item slot="header" color="light">
+                    <ion-label>Requisitos</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">
+                    <ion-list>
+                      <ion-item>
+                        <ion-label style="font-weight: bold;">Tarjeta de identificación (DNI)</ion-label>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label style="font-weight: bold;">Recibo de luz</ion-label>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>
+                          <div class="ion-margin" style="font-weight: bold;">6 focos viejos</div>
+                          <div style="list-style: none;">
+                            <div style="display: flex;align-items: center;">
+                              <ion-icon name="foco-incandescente" class="foco-icon"></ion-icon>
+                              Incandescentes
+                            </div>
+                            <div style="display: flex;align-items: center;">
+                              <ion-icon name="foco-fluorescente" class="foco-icon"></ion-icon>
+                              Fluorescentes
+                            </div>
+                            <div style="display: flex;align-items: center;">
+                              <ion-icon name="foco-led" class="foco-icon"></ion-icon>
+                              LED's
+                            </div>
+                          </div>
+                        </ion-label>
+                      </ion-item>
+                    </ion-list>
+                  </div>
+                </ion-accordion>
+              </ion-accordion-group>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+      </ion-label>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-icon slot="start" name="thermometer-outline" color="tertiary"></ion-icon>
+      <ion-label class="ion-margin-start">
+        <h2>Regula el Termostato</h2>
+        <p>Mantén el termostato a 24°C en verano y 20°C en invierno para ahorrar energía.</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-icon slot="start" name="water" color="primary"></ion-icon>
+      <ion-label class="ion-margin-start">
+        <h2>Reduce el Uso de Agua Caliente</h2>
+        <p>Utiliza menos agua caliente y baja la temperatura del calentador de agua para ahorrar energía.</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-icon slot="start" name="sunny" color="warning"></ion-icon>
+      <ion-label class="ion-margin-start">
+        <h2>Aprovecha la Luz Natural</h2>
+        <p>Abre las cortinas y aprovecha al máximo la luz natural durante el día.</p>
+      </ion-label>
+    </ion-item>
+
+    <ion-item class="ion-margin-bottom">
+      <ion-icon slot="start" name="power" color="danger"></ion-icon>
+      <ion-label class="ion-margin-start">
+        <h2>Desconecta Aparatos Electrónicos</h2>
+        <p>Desconecta los dispositivos que no estés utilizando para evitar el consumo de energía en standby.</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+  
+</ion-content>
+
+
+

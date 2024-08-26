@@ -1,0 +1,11 @@
+ion-card {
+  height: 219px;
+}
+
+ion-list {
+  ion-item {
+    --border-color: transparent;
+  }
+  
+  border-radius: 1rem;
+}

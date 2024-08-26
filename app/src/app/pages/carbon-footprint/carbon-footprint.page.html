@@ -1,0 +1,127 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center ion-padding">Huella de carbono</ion-title>
+    <ion-segment [value]="segmentValue" color="warning">
+      <ion-segment-button value="current" layout="icon-start" (click)="segmentValue = 'current'">
+        <ion-icon name="foot" color="warning"></ion-icon>
+        <ion-label class="ion-margin-start">Actual</ion-label>
+      </ion-segment-button>
+      <!-- <ion-segment-button value="forecast" layout="icon-start" (click)="segmentValue = 'forecast'">
+        <ion-icon name="stats-chart" color="warning"></ion-icon>
+        <ion-label class="ion-margin-start">Pronostico</ion-label>
+      </ion-segment-button> -->
+    </ion-segment>
+  </ion-toolbar> 
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  @if(dataHandler.isLoading) {
+    <ion-skeleton-text [animated]="true" style="width: 80px"></ion-skeleton-text>
+  }
+
+  @if(dataHandler.data) {
+    @let co2MonthlyRounded = dataHandler.data.co2MonthlyRounded;
+    @let co2AnnualRounded  = dataHandler.data.co2AnnualRounded;
+
+    @switch (segmentValue) {
+      @case ('current') {
+        <div class="ion-text-center">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title style="font-weight: bold;" [color]="co2MonthlyRounded.color">
+                <!-- <ion-icon name="bar-chart-outline" /> -->
+                Consumo {{ co2MonthlyRounded.range }}
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <div style="width: 100%;margin-top: -65px;">
+                <div
+                  style="height: 283px;"
+                  echarts
+                  [initOpts]="{ renderer: 'svg' }"
+                  [options]="chartOptionsInitOptions"
+                  class="monitoring-chart"
+                  theme="dark">
+                </div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+
+        <!-- ANNUAL -->
+        <div class="ion-text-center" style="margin-bottom: 3rem;">
+          <ion-text [color]="co2AnnualRounded.color">
+            <h1 style="font-size: 3em;">
+              <strong>{{ co2AnnualRounded.value }} kg</strong>
+            </h1>
+          </ion-text>
+          <ion-text color="medium">
+            <h4 style="font-weight: normal;">
+              CO<sub>2</sub> por año
+            </h4>
+          </ion-text>
+        </div>
+        
+        <ion-list>
+          <ion-item>
+            <ion-label>Emisiones de CO<sub>2</sub> por kWh</ion-label>
+            <ion-text slot="end" color="medium">
+              <strong>{{ dataHandler.data.co2PerKwh }}</strong> kg
+            </ion-text>
+          </ion-item>
+        </ion-list>
+      }
+
+      @case ('forecast') {
+        <div class="ion-text-center">
+          <ion-text [color]="co2MonthlyRounded.color">
+            <ion-icon name=""></ion-icon>
+            <strong>Se preveé que consumas</strong>
+          </ion-text>
+        </div>
+
+        <!-- MONTHLY -->
+        <div class="ion-text-center" style="margin-bottom: 2rem;">
+          <ion-text [color]="co2MonthlyRounded.color">
+            <h1 style="font-size: 3em;">
+              <strong>{{ co2MonthlyRounded.value }} kg</strong>
+            </h1>
+          </ion-text>
+          <ion-text color="medium">
+            <h4 style="font-weight: normal;">
+              CO<sub>2</sub> por mes
+            </h4>
+          </ion-text>
+        </div>
+
+        <!-- ANNUAL -->
+        <div class="ion-text-center" style="margin-bottom: 3rem;">
+          <ion-text [color]="co2AnnualRounded.color">
+            <h1 style="font-size: 3em;">
+              <strong>{{ co2AnnualRounded.value }} kg</strong>
+            </h1>
+          </ion-text>
+          <ion-text color="medium">
+            <h4 style="font-weight: normal;">
+              CO<sub>2</sub> por año
+            </h4>
+          </ion-text>
+        </div>
+        
+        <ion-list>
+          <ion-item style="border-bottom: 0;">
+            <ion-label>Emisiones de CO<sub>2</sub> por kWh</ion-label>
+            <ion-text slot="end" color="medium">
+              <strong>{{ dataHandler.data.co2PerKwh }}</strong> kg
+            </ion-text>
+          </ion-item>
+        </ion-list>
+      }
+      @default {
+        <ion-text color="danger">
+          <h1>Error: Segmento desconocido</h1>
+        </ion-text>
+      }
+    }
+  }
+</ion-content>

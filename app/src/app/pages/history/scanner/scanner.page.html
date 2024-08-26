@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" (click)="modalCtrl.dismiss()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Verificar factura</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div style="display: flex;align-items: center; justify-content: center;height: 100%;margin-top: -3em;">
+    <ion-card class="ion-padding">
+      <ion-card-header>
+        <ion-card-title style="font-weight: bold;">Escanea tu factura</ion-card-title>
+        <ion-card-subtitle>Ahora comprobemos tu factura para poder continuar</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content class="ion-margin-top">
+        @if(dataHandlerScanner.isLoading) {
+          <div class="start-scanning">        
+            <div class="ocrloader">
+              <img [src]="srcPreview" alt="">
+              <div class="container-text">
+                <p>Analizando</p>
+              </div>
+              <em></em>
+              <span></span>
+            </div>
+          </div>
+          <div class="ion-text-center">
+            <ion-button color="danger" (click)="stop()" size="small">Cancelar</ion-button>
+          </div>
+        }
+
+        @if(!dataHandlerScanner.isObtained && !dataHandlerScanner.isLoading) {
+          <ion-button shape="round" size="large" expand="block" color="secondary" fill="outline" (click)="showActionSheetCameraOptions()">
+            <div class="ion-margin-end">Escanear</div>
+            <ion-icon name="scan" />
+          </ion-button>
+        }
+
+        @if(dataHandlerScanner.error) {
+          <div class="ion-text-center ion-margin-top">
+            <ion-text color="danger">
+              <p>No se pudo verificar tu factura.</p>
+            </ion-text>
+          </div>
+        }
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,12 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="start" fill="clear" color="medium" routerLink="/tabs/menu">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+    <ion-title>Licencias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div [innerHTML]="licenses"></div>
+</ion-content>

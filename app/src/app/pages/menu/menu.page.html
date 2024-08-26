@@ -1,0 +1,116 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Eco Honduras
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button expand="full" color="danger" (click)="firebaseAuth.signOut()">
+        Salir
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding-top">
+  <div>
+    <div class="ion-text-center">
+      <div class="ion-text-center">
+        <img src="./assets/icon/logo.png" style="width: 150px; height: 150px;" />
+      </div>
+      <ion-text color="medium">
+        Versión {{ appVersion }}
+      </ion-text>
+      
+      <ion-card class="ion-padding" style="border-radius: 3em; margin: 2rem;">
+        <div>
+          <img class="ion-margin-top" src="./assets/img/logo-sen.png" style="width: 100px;height: 80.90px;" />
+          <blockquote>
+            <ion-text color="secondary" style="font-weight: bold;">
+              <h4>
+                <strong>"Aprende viendo,</strong>
+                <br>
+                <span style="font-weight: normal;">aprende jugando"</span>
+              </h4>
+            </ion-text>
+          </blockquote>
+          <ion-text color="medium">
+            <figcaption class="ion-margin-top">
+              Secretaría de Energía <cite title="SEN">SEN</cite>
+            </figcaption>
+          </ion-text>
+        </div>
+      </ion-card>
+
+      
+      <ion-button color="primary" shape="round" class="ion-margin-top" routerLink="/licenses">
+        Licencias
+      </ion-button>
+      
+      <div class="ion-margin-top">
+        <ion-text color="medium">
+          Alejandro Villatoro &copy; 2024
+        </ion-text>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="full" color="light" routerLink="/challenges" shape="round" class="ion-padding">
+          <ion-icon name="flash-outline" slot="start" size="large"></ion-icon>
+          <div class="ion-margin-start">Retos</div>
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="full" color="light" shape="round" class="ion-padding">
+          <ion-icon name="bulb-outline" slot="start" size="large"></ion-icon>
+          <div class="ion-margin-start">Tips</div>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand="full" color="light" shape="round" class="ion-padding">
+          <ion-icon name="newspaper-outline" slot="start" size="large"></ion-icon>
+          <div class="ion-margin-start">Reportes</div>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-margin-top ion-margin-bottom ion-margin">
+      <ion-col class="ion-text-center">
+        <ion-card class="ion-padding" style="border-radius: 3em;">
+          <ion-card-content>
+            <blockquote class="blockquote">
+              <ion-text color="secondary" style="font-weight: bold;">
+                <h2>
+                  <strong>"Aprende viendo,</strong>
+                  <br>
+                  aprende jugando"
+                </h2>
+              </ion-text>
+            </blockquote>
+            <figcaption class="ion-margin-top">
+              - Secretaría de Energía <cite title="SEN">SEN</cite>
+            </figcaption>
+          </ion-card-content>
+          <img class="ion-margin-top" src="./assets/img/logo-sen.png" style="width: 100px;height: 80.90px;" />
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-margin-bottom">
+      <ion-col>
+        <ion-button expand="full" color="light" size="large" shape="round" (click)="firebaseAuth.signOut()">
+          Cerrar sesión
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  
+</ion-content>

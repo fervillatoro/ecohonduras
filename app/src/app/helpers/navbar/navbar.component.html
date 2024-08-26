@@ -1,0 +1,94 @@
+
+<nav class="fixed-bottom start-0 end-0 bg-light-subtle shadow-sm" style="z-index: 1;">
+  <div class="w-100 mx-auto h-100" style="z-index: 10;box-shadow: var(--bs-dark) 0px 0px 2px;">
+    <div class="d-flex align-items-center justify-content-between h-100">
+      <!-- SIDEBAR BUTTON & NAVBAR ITEMS -->
+      <!-- <div class="d-flex align-items-center"> -->
+        <!-- BTN-OPEN-SIDEBAR -->
+        <!-- <div>
+          <button [routerLink]="loginStatus?.isLogged ? '/' : '/welcome'" type="button" class="btn" style="position: relative;top: -1px;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="var(--bs-light-text-emphasis)" class="bi bi-list" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+            </svg>
+          </button>
+        </div> -->
+        <!-- LOGO -->
+        <!-- <img
+          class="p-2"
+          style="width: 72px; height: 72px;position: relative;cursor: pointer;"
+          src="./assets/icon/favicon.png"
+          alt="Logo Eco Honduras"
+          routerLink="/"
+        > -->
+      <!-- </div> -->
+
+      <!-- ITEMS -->
+      <div class="d-flex justify-content-between align-items-center p-2 w-100">
+        <!-- Current: "bg-gray-900 text-pink", Default: "text-gray-300 hover:bg-gray-700 hover:text-pink" -->
+        <a routerLink="/" class="btn d-flex align-items-center">
+          <div>
+            <ion-icon [name]="location.pathname == '/' ? 'home' : 'home-outline'"></ion-icon>
+            <div class="item-title">Inicio</div>
+          </div>
+        </a>
+
+        <a routerLink="/monitoring" class="btn d-flex align-items-center">
+          <div>
+            <ion-icon [name]="location.pathname == '/monitoring' ? 'bulb' : 'bulb-outline'"></ion-icon>
+            <div class="item-title">Consumo</div>
+          </div>
+        </a>
+
+        <a routerLink="/calculator" class="btn d-flex align-items-center">
+          <div>
+            <ion-icon [name]="location.pathname == '/calculator' ? 'finger-print' : 'finger-print-outline'"></ion-icon>
+            <div class="item-title">Huella</div>
+          </div>
+        </a>
+
+        <a routerLink="/menu" class="btn d-flex align-items-center">
+          <div>
+            <ion-icon [name]="location.pathname == '/menu' ? 'menu' : 'menu-outline'"></ion-icon>
+            <div class="item-title">Menú</div>
+          </div>
+        </a>
+      </div>
+
+      <div class="d-flex align-items-center">
+        <!-- <div id="select-address" class="d-flex align-items-center text-light text-xs px-2" (click)="showAddressConfigModal()">
+          <div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+              <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+              <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+            </svg>
+          </div>
+          <div class="ms-2">
+            <div>2777 N Buciasui Blvd</div>
+            <div>Dallas, TX, 75228</div>
+          </div>
+        </div> -->
+        <!-- <button type="button" class="btn text-light position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBag">
+          @if(bag.countServices > 0) {
+            <div
+              class="position-absolute d-flex justify-content-center align-items-center bottom-0 text-white bg-danger text-xss rounded-circle fw-bold"
+              style="width: 1rem; height: 1rem;"
+              [innerHTML]="bag.countServices">
+            </div>
+          }
+          <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="shopping-bag">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+          </svg>
+        </button> -->
+      </div>
+      
+
+      
+    </div>
+    @if (isLoadApp) {
+      <div class="position-absolute w-100 start-0" style="top: calc(var(--ivi-size-top-nav) - 2px);">
+        <app-loading-bar/>
+      </div>
+    }
+    
+  </div>
+</nav>

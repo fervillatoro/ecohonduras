@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="medium" (click)="modalCtrl.dismiss()">Cancelar</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="continueToVerify()" [strong]="true" color="primary">Continuar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header class="ion-text-center">
+      <ion-card-title style="font-weight: bold;">Agregar factura</ion-card-title>
+      <ion-card-subtitle>a tu historial</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="frm"> 
+        <ion-list>
+          <ion-item class="ion-margin-botton">
+            <ion-input labelPlacement="floating" type="text" formControlName="client_code">
+              <div slot="label">Código de cliente <ion-text color="danger">*</ion-text></div>
+            </ion-input>
+          </ion-item>
+          <ion-item style="margin-bottom: 1rem">
+            <ion-input labelPlacement="floating"  type="number" formControlName="kwh">
+              <div slot="label">Consumo (kwh) <ion-text color="danger">*</ion-text></div>
+            </ion-input>
+          </ion-item>
+
+          <ion-item style="margin-bottom: 1rem">
+            <ion-select label="Tipo de consumo" formControlName="type_consumption" labelPlacement="floating" cancelText="Cancelar" okText="Aceptar">
+              <ion-select-option value="residential">Residencial</ion-select-option>
+              <ion-select-option value="low_tension">Baja tensión</ion-select-option>
+              <ion-select-option value="medium_tension">Media tensión</ion-select-option>
+              <ion-select-option value="high_tension">Alta tensión</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+
+
+          <ion-text class="ion-text-center" color="dark">
+            <h5>Fecha de facturación</h5>
+          </ion-text>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-text class="ion-text-center">
+                  <h6>Desde</h6>
+                </ion-text>
+                <ion-datetime-button datetime="billing_date_from" />
+                <ion-modal [keepContentsMounted]="true">
+                  <ng-template>
+                    <ion-datetime
+                      id="billing_date_from"
+                      formControlName="billing_date_from"
+                      displayFormat="YYYY-MM-DD"
+                      pickerFormat="YYYY-MM-DD"
+                      [showDefaultButtons]="true"
+                      doneText="Aceptar"
+                      cancelText="Cancelar"
+                      presentation="date"
+                    >
+                      <span slot="title">Fecha de facturación inicial</span>
+                    </ion-datetime>
+                  </ng-template>
+                </ion-modal>
+              </ion-col>
+              <ion-col>
+                <ion-text class="ion-text-center">
+                  <h6>Hasta</h6>
+                </ion-text>
+                <ion-datetime-button datetime="billing_date_to" />
+                <ion-modal [keepContentsMounted]="true">
+                  <ng-template>
+                    <ion-datetime
+                      id="billing_date_to"
+                      formControlName="billing_date_to"
+                      displayFormat="YYYY-MM-DD"
+                      pickerFormat="YYYY-MM-DD"
+                      [showDefaultButtons]="true"
+                      doneText="Aceptar"
+                      cancelText="Cancelar"
+                      presentation="date">
+                      <span slot="title">Fecha de facturación final</span>
+                    </ion-datetime>
+                  </ng-template>
+                </ion-modal>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-list>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+

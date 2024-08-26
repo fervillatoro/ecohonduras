@@ -1,0 +1,103 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title size="large">
+      <div style="display: flex; align-items: center; justify-content: center;">
+        <img src="./assets/icon/logo.png" style="width: 50px; height: 50px;">
+        <span style="font-weight: bold;">Eco Honduras</span>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding">
+
+  @if(dataHandlerWeather.isObtained) {
+    <ion-accordion-group expand="inset" class="animate__animated animate__fadeIn">
+      <ion-accordion value="first" style="border-radius: 1em">
+        <ion-item slot="header" color="light">
+          <ion-label>
+            <div style="display: flex;align-items: center; justify-content: space-between;">
+              <div>
+                <ion-text color="dark">
+                  <h2 style="font-weight: bold;">{{ dataHandlerWeather.data.current.temp_c }} °C</h2>
+                </ion-text>
+                <div>{{ dataHandlerWeather.data.location.name }}</div>
+              </div>
+              <div>
+                <ion-avatar style="display: flex;justify-content: center;align-items: center;">
+                  <img style="width: 50px;height: 50px;" [src]="dataHandlerWeather.data.current.condition.icon" />
+                </ion-avatar>
+              </div>
+            </div>
+          </ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <ion-list>
+            @for (tip of energySavingTips; track $index) {
+              <ion-item class="ion-margin-top">
+                <ion-icon style="margin-top: -4px" aria-hidden="true" color="medium"  size="large" [name]="tip.icon" slot="start"></ion-icon>
+                <ion-label class="ion-padding-start ion-padding-bottom">{{tip.text}}</ion-label>
+              </ion-item>
+            }
+          </ion-list>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  }
+
+  <div class="ion-text-center">
+    <ion-row class="ion-justify-content-center ion-margin-top">
+      <ion-col size="11">
+        <ion-card class="ion-padding">
+          <ion-card-title class="ion-text-center">
+            Monitorea tu consumo
+          </ion-card-title>
+          <ion-card-content class="ion-text-center">
+            de los últimos meses.
+            <ion-button shape="round" color="warning" routerLink="/tabs/history" expand="block" class="ion-margin-top">
+              Ver mi historial
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="ion-padding ion-margin-top">
+          <ion-card-title class="ion-text-center">
+            Calcula tu huella
+          </ion-card-title>
+          <ion-card-content class="ion-text-center">
+            de carbono.
+            <ion-button shape="round" color="primary" routerLink="/tabs/carbon-footprint" expand="block" class="ion-margin-top">
+              Calcular
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+
+        <ion-card class="ion-padding ion-margin-top">
+          <ion-card-title class="ion-text-center">
+            Ahorra energía,
+          </ion-card-title>
+          <ion-card-content class="ion-text-center">
+            ahorra dinero.
+            <ion-button shape="round" color="success" routerLink="/tabs/tips" expand="block" class="ion-margin-top">
+              Más tips
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- <ion-card class="ion-padding">
+          <ion-card-title class="ion-text-center">
+            Consulta los retos
+          </ion-card-title>
+          <ion-card-content class="ion-text-center">
+            que puedes realizar para reducir tu huella de carbono.
+            <ion-button shape="round" color="warning" routerLink="/challenges" expand="block" class="ion-margin-top">
+              Retos
+            </ion-button>
+          </ion-card-content>
+        </ion-card> -->
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+

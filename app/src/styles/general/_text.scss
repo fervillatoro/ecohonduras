@@ -1,0 +1,12 @@
+@supports (
+  (-webkit-background-clip: text) or (-webkit-text-fill-color: transparent)
+  ) {
+  .zav-text-effect {
+    background: linear-gradient(to right, var(--bs-info), var(--bs-primary), var(--bs-info));
+    background-size: cover;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    // text-shadow: 1px 1px 1px var(--bs-primary);
+  }
+}

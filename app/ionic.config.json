@@ -1,0 +1,7 @@
+{
+  "name": "ecohonduras",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

@@ -1,0 +1,7 @@
+
+@media only screen and (min-width: 600px) {
+  .sticky-only-pc {
+    position: sticky;
+    top: calc(var(--zv-size-top-nav) + 20px);
+  }
+}

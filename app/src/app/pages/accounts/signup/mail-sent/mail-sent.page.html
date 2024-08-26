@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Activa tu cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <div style="display: flex;align-items: center;justify-content: center;gap: 7px;">
+          <ion-icon color="success" name="checkmark-circle" size="large"></ion-icon>
+          Te enviamos un correo
+        </div>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div style="text-align:center">
+        <p>Por favor, sigue las instrucciones para activar tu cuenta.</p>
+      </div>
+      <ion-button expand="block" color="success" routerLink="/accounts/login" shape="round" class="ion-margin-top" (click)="modalCtrl.dismiss()">Aceptar</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

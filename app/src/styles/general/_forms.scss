@@ -1,0 +1,40 @@
+label::after {
+  background-color: transparent!important;
+}
+
+.input-group-text {
+  background: var(--bs-body-bg);
+  border: 0;
+}
+
+.form-control, .form-select {
+  border: none;
+
+  // &:focus {
+  //   border-color: hsla(49, 98%, 76%, 0.526);
+  //   box-shadow: 0 0 0 3px hsla(50, 100%, 50%, 0.216);
+  // }
+
+  &.ng-invalid.ng-touched {
+    border-color: rgba(var(--bs-danger-rgb));
+    
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px hsla(0, 100%, 50%, 0.357);
+    }
+
+    &+label {
+      color: var(--bs-danger)!important;
+    }
+  }
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+form {
+  user-select: none;
+}

@@ -1,0 +1,27 @@
+@keyframes spotlightFade {
+  0% {
+    filter: drop-shadow(0 0 1px rgba(56, 210, 115, 0.5));
+  }
+  50% {
+    filter: drop-shadow(0 0 5px rgb(52, 252, 255));
+  }
+  100% {
+    filter: drop-shadow(0 0 1px rgba(56, 210, 115, 0.5));
+  }
+}
+
+.spotlight {
+  animation: spotlightFade 1s infinite;
+}
+
+.launcher-container {
+  background: var(--ion-background);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+}
