@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fondo del splash screen -->
+    <item>
+        <color android:color="#121212"/> <!-- Puedes cambiar el color según tus necesidades -->
+    </item>
+    <!-- Imagen del splash screen -->
+    <item>
+        <bitmap android:src="@drawable/splash" android:gravity="center"/>
+    </item>
+</layer-list>

@@ -18,6 +18,7 @@ export class AppComponent {
     private router: Router,
     private load: LoadService
   ) {
+
   //  firebase.getLoginStatus()
   //   .then((loginStatus) => {
   //     console.log(loginStatus);
@@ -40,7 +41,7 @@ export class AppComponent {
         this.load.stop('app.component');
         setTimeout(() => {
           this.appLoaded = true;
-          SplashScreen.hide();
+          // SplashScreen.hide();
         }, 1000);
       }
     });
