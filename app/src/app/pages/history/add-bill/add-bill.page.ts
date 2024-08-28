@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder } from '@angular/forms';
+import { AbstractControlOptions, FormBuilder } from '@angular/forms';
 import { IonContent, LoadingController, ToastController, IonSelect, IonHeader, IonTitle, IonSelectOption, IonToolbar, IonInput, IonButtons, IonButton, IonItem, IonNote, IonLabel, IonFooter, IonText, IonList, IonModal, IonIcon, IonAlert, IonLoading, IonCardContent, IonCard, IonCardTitle, IonCardHeader, IonCardSubtitle, IonDatetime, IonDatetimeButton, IonRow, IonCol, IonGrid } from '@ionic/angular/standalone';
 import { API } from 'src/app/interfaces/api';
 import { ModalController } from '@ionic/angular';
@@ -11,6 +11,7 @@ import { EnergyHistoryByMonth } from 'src/app/interfaces/energy_history_by_month
 import { Bill } from 'src/app/interfaces/bill';
 import { ScannerPage } from '../scanner/scanner.page';
 import { format, parseISO } from 'date-fns';
+import { dateRangeValidator } from 'src/app/validators/date-range.validator';
 
 
 @Component({
@@ -39,17 +40,9 @@ export class AddBillPage implements OnInit {
     isObtained: false,
     data: null
   };
-  
-
-  
 
   currentdate = '';
-
   frm: FormGroup;
-
-  /**
-   * Para verificar la factura se necesita el RTN de la enee en dicha factura o el sitio web
-   */
   rtnEnee = '08019003243825';
 
   constructor(
@@ -60,8 +53,9 @@ export class AddBillPage implements OnInit {
     public loadingCtrl: LoadingController,
     public toastCtrl: ToastController
   ) {
-    console.log(format(parseISO(new Date().toISOString()), 'yyyy-MM-dd'));
-    
+    const controlOptions: AbstractControlOptions = {
+      validators: dateRangeValidator()
+    };
 
     this.frm = this.fb.group({
       client_code: ['', [Validators.required, Validators.minLength(6)]],
@@ -69,18 +63,23 @@ export class AddBillPage implements OnInit {
       billing_date_from: [new Date().toISOString(), [Validators.required]],
       billing_date_to: [new Date().toISOString(), [Validators.required]],
       type_consumption: ['residential', Validators.required]
-    });
-    
+    }, controlOptions);
   }
 
   
 
   async continueToVerify() {
+    this.dataHandler.error = undefined;
     this.frm.markAllAsTouched();
-    if(this.frm.invalid) return;
-
     
+    // if(this.frm.hasError('dateRangeInvalid')) {
+    //   this.dataHandler.error = {
+    //     msg: 'El rango de fechas debe ser de 30 días'
+    //   };
+    // }
 
+    if(this.frm.invalid) return;
+    
     const modal = await this.modalCtrl.create({
       component: ScannerPage,
       componentProps: {
@@ -108,7 +107,7 @@ export class AddBillPage implements OnInit {
   async showLoading() {
     const loading = await this.loadingCtrl.create({
       message: 'Espere un momento...',
-      spinner: 'crescent' // Puedes usar otros tipos de spinners como 'bubbles', 'lines', etc.
+      spinner: 'crescent'
     });
   
     await loading.present();
@@ -233,19 +232,12 @@ export class AddBillPage implements OnInit {
   
   ngOnInit(): void {
     this.currentdate = this.formatDateWithLeadingZero();
-    // this.frm.patchValue({
-    //   billing_date_from: this.currentdate,
-    //   billing_date_to: this.currentdate
-    // });
-
-    
   }
 
   formatDateWithLeadingZero() {
     const date = new Date();
-    
     const day = String(date.getDate()).padStart(2, '0');
-    const month = String(date.getMonth() + 1).padStart(2, '0'); // getMonth() es 0-indexado
+    const month = String(date.getMonth() + 1).padStart(2, '0');
     const year = date.getFullYear();
     
     return `${year}-${month}-${day}`;

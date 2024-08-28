@@ -16,6 +16,11 @@
       <ion-card-subtitle>a tu historial</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
+      @if(dataHandler.error) {
+        <ion-text color="danger" class="ion-text-center">
+          <h6>{{ dataHandler.error.msg }}</h6>
+        </ion-text>
+      }
       <form [formGroup]="frm"> 
         <ion-list>
           <ion-item class="ion-margin-botton">
@@ -40,7 +45,7 @@
 
 
 
-          <ion-text class="ion-text-center" color="dark">
+          <ion-text class="ion-text-center" [color]="frm.touched && frm.hasError('dateRangeInvalid') ? 'danger' : 'dark'">
             <h5>Fecha de facturación</h5>
           </ion-text>
           <ion-grid>
@@ -49,7 +54,7 @@
                 <ion-text class="ion-text-center">
                   <h6>Desde</h6>
                 </ion-text>
-                <ion-datetime-button datetime="billing_date_from" />
+                <ion-datetime-button datetime="billing_date_from" color="danger" />
                 <ion-modal [keepContentsMounted]="true">
                   <ng-template>
                     <ion-datetime
@@ -76,6 +81,8 @@
                   <ng-template>
                     <ion-datetime
                       id="billing_date_to"
+                      [class]="frm.hasError('dateRangeInvalid') ? '
+                      ' : 'primary'"
                       formControlName="billing_date_to"
                       displayFormat="YYYY-MM-DD"
                       pickerFormat="YYYY-MM-DD"

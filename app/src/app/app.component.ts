@@ -39,10 +39,8 @@ export class AppComponent {
       
       if (event instanceof NavigationEnd || event instanceof NavigationCancel) {
         this.load.stop('app.component');
-        setTimeout(() => {
-          this.appLoaded = true;
-          // SplashScreen.hide();
-        }, 1000);
+        this.appLoaded = true;
+        // SplashScreen.hide();
       }
     });
   }

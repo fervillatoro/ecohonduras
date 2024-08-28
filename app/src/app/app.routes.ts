@@ -55,10 +55,6 @@ export const routes: Routes = [
   {
     path: 'licenses',
     loadComponent: () => import('./pages/licenses/licenses.page').then( m => m.LicensesPage)
-  },
-  {
-    path: 'ranking',
-    loadComponent: () => import('./pages/ranking/ranking.page').then( m => m.RankingPage)
   }
   
 ];
