@@ -50,6 +50,16 @@
 //   scroll-behavior: smooth;
 // }
 
+@font-face {
+  font-family: 'Lexend Deca';
+  src: url('/assets/fonts/Lexend_Deca/static/LexendDeca-Regular.ttf') format('ttf'),
+       url('/assets/fonts/Lexend_Deca/static/LexendDeca-Medium.ttf') format('ttf'),
+       url('/assets/fonts/Lexend_Deca/static/LexendDeca-Bold.ttf') format('ttf');
+  // font-weight: normal;
+  // font-style: normal;
+}
+
+
 * {
   margin: 0;
   font-family: "Lexend Deca", sans-serif;

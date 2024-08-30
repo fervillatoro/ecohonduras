@@ -7,6 +7,7 @@ import { addIcons } from 'ionicons';
 import { grid, shirt, sunny, thermometerOutline } from 'ionicons/icons';
 import { API } from 'src/app/interfaces/api';
 import { CacheService } from 'src/app/services/cache.service';
+import { Geolocation } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-home',
@@ -132,21 +133,22 @@ export class HomePage implements OnInit {
     }
   }
 
-  async getIp(): Promise<string> {
-    const ip = this.cacheService.getCachedData<string>('ip');
-    if(ip) return new Promise<string>(resolve => resolve(ip));
-    
-    const response = await fetch('https://api.ipify.org?format=json');
-    const data     = await response.json();
-    const ipAPI = data.ip;
-    this.cacheService.setCachedData('ip', ipAPI, {'d': 1});
-    return ipAPI;
+  async getApproximateLocation(): Promise<string> {
+    const coordinatesCache = this.cacheService.getCachedData<string>('coordinates');
+    if(coordinatesCache) return new Promise<string>(resolve => resolve(coordinatesCache));
+
+    const coordinatesDevice = await Geolocation.getCurrentPosition({
+      enableHighAccuracy: true
+    });
+    console.log('Current position:', coordinatesDevice);
+    this.cacheService.setCachedData('coordinates', coordinatesDevice, {'d': 1});
+    return coordinatesDevice.coords.latitude + ',' + coordinatesDevice.coords.longitude;
   }
 
   async getWeather() {
-    const ip = await this.getIp();
-    if(!ip) {
-      console.error('No se pudo obtener la dirección IP.');
+    const coordinates = await this.getApproximateLocation();
+    if(!coordinates) {
+      console.error('No se pudo obtener la ubicación.');
       return;
     }
 
@@ -162,7 +164,8 @@ export class HomePage implements OnInit {
     }
 
     this.dataHandlerWeather.isLoading = true;
-    fetch(`https://api.weatherapi.com/v1/current.json?key=93b8a700cd154317a5e211547242308&q=${ip}&aqi=no`)
+    
+    fetch(`https://api.weatherapi.com/v1/current.json?key=93b8a700cd154317a5e211547242308&q=${coordinates}&aqi=no`)
       .then(response => response.json())
       .then(data => {
         this.dataHandlerWeather.data = data;

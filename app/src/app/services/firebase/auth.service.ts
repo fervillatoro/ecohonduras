@@ -27,7 +27,7 @@ export class FirebaseAuthService {
     const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
     // Inicio de sesión exitoso
     console.log('Usuario autenticado:', userCredential.user);
-    this.router.navigate(['/'], { replaceUrl: true }); // Redirige a la página principal o a un área protegida
+    this.router.navigate(['/tabs'], { replaceUrl: true }); // Redirige a la página principal o a un área protegida
   }
 
   signOut() {

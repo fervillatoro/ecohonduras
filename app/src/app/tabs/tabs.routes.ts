@@ -4,7 +4,7 @@ import { FirebaseAuthCheckGuard } from '../guards/firebase-auth-check.guard';
 
 export const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     canActivate: [FirebaseAuthCheckGuard],
 

@@ -6,20 +6,10 @@ const config: CapacitorConfig = {
   webDir: 'www',
   plugins: {
     SplashScreen: {
-      launchShowDuration: 3000,
-      launchAutoHide: true,
-      launchFadeOutDuration: 400,
-      backgroundColor: "#121212",
-      androidSplashResourceName: "splash",
-      androidScaleType: "CENTER_CROP",
-      showSpinner: false,
-      androidSpinnerStyle: "large",
-      iosSpinnerStyle: "small",
-      spinnerColor: "#999999",
-      splashFullScreen: true,
-      splashImmersive: true,
-      layoutName: "launch_screen",
-      useDialog: true,
+      backgroundColor: "#2C2C2C",
+      // splashImmersive: true,
+      // splashFullScreen: true,
+      launchAutoHide: false
     },
   },
 };

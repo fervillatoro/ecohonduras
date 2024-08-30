@@ -14,38 +14,8 @@ export const routes: Routes = [
       },
     ]
   },
-  // {
-  //   path: 'navbar',
-  //   canActivate: [FirebaseAuthCheckGuard],
-  //   loadComponent: () => import('./helpers/navbar/navbar.component').then( m => m.NavbarComponent),
-  //   children: [
-  //     {
-  //       path: 'challenges',
-  //       loadComponent: () => import('./components/challenges/challenges.component').then( m => m.ChallengesComponent)
-  //     },
-  //     {
-  //       path: 'calculator',
-  //       loadComponent: () => import('./components/calculator/calculator.component').then( m => m.CalculatorComponent)
-  //     },
-  //     {
-  //       path: 'monitoring',
-  //       loadComponent: () => import('./components/monitoring/monitoring.component').then( m => m.MonitoringComponent)
-  //     },
-  //     {
-  //       path: 'menu',
-  //       loadComponent: () => import('./components/menu/menu.component').then( m => m.MenuComponent)
-  //     },
-      
-  //     {
-  //       path: '',
-  //       redirectTo: 'home', // Ruta por defecto
-  //       pathMatch: 'full'
-  //     }
-  //   ]
-  // },
-  
   {
-    path: '',
+    path: 'tabs',
     loadChildren: () => import('./tabs/tabs.routes').then((m) => m.routes),
   },
   {
@@ -55,6 +25,10 @@ export const routes: Routes = [
   {
     path: 'licenses',
     loadComponent: () => import('./pages/licenses/licenses.page').then( m => m.LicensesPage)
+  },
+  {
+    path: '',
+    loadComponent: () => import('./pages/starting/starting.page').then( m => m.StartingPage)
   }
   
 ];

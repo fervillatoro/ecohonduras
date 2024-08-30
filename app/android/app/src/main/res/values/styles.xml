@@ -16,16 +16,7 @@
     </style>
 
 
-    
-    
     <style name="AppTheme.NoActionBarLaunch" parent="Theme.SplashScreen">
-        <item name="android:background">#121212</item> <!-- Fondo sólido -->
-        <item name="android:windowSplashScreenBackground">#121212</item>
-        <item name="android:windowFullscreen">true</item> <!-- Pantalla completa -->
-        <item name="android:windowIsTranslucent">false</item>
-        <!-- ANDROID 12+ -->
-        <!-- <item name="android:windowSplashScreenAnimatedIcon">@drawable/splash</item> -->
-        
+        <item name="android:background">@drawable/splash</item>
     </style>
-
 </resources>
