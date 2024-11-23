@@ -15,7 +15,7 @@ import { SplashScreen } from '@capacitor/splash-screen';
 export class StartingPage implements OnInit {
 
   constructor(private auth: Auth, private router: Router) {
-    this.auth.onAuthStateChanged((user) => user ? this.router.navigate(['/tabs/home']) : this.router.navigate(['/accounts/login']));
+    this.auth.onAuthStateChanged((user) => user ? this.router.navigate(['/tabs/home'], { replaceUrl: true }) : this.router.navigate(['/accounts/login', { replaceUrl: true }]));
   }
 
   ngOnInit() {

@@ -16,7 +16,7 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
   @if(dataHandler.isLoading) {
-    <ion-skeleton-text [animated]="true" style="width: 90%;height: 50%;"></ion-skeleton-text>
+    <ion-skeleton-text [animated]="true" style="width: 90%;height: 50%;" />
   }
 
   @if(dataHandler.error) {
@@ -38,7 +38,6 @@
           <ion-card>
             <ion-card-header>
               <ion-card-title style="font-weight: bold;" [color]="co2MonthlyRounded.color">
-                <!-- <ion-icon name="bar-chart-outline" /> -->
                 Consumo {{ co2MonthlyRounded.range }}
               </ion-card-title>
             </ion-card-header>

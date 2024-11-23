@@ -112,7 +112,7 @@ export class CarbonFootprintPage implements OnInit {
     if(history.length === 0) {
       this.dataHandler.isLoading = false;
       this.dataHandler.error = {
-        msg: 'No hay historial de consumo, primer agrega una factura desde la página de consumo.',
+        msg: 'No hay historial de consumo, primero agrega una factura desde la página de consumo.',
       }
       return;
     }
